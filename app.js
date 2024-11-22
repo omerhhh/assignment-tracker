@@ -27,14 +27,14 @@ app.set('views', './views'); // Path to the views folder
 
 // Homepage - Fetch all assignments
 app.get('/', async (req, res) => {
-    try {
-      const assignments = await Assignment.find();
-      res.render('index', { assignments, error: null });
-    } catch (err) {
-      console.error('Error fetching assignments:', err.message);
-      res.render('index', { assignments: [], error: 'Failed to fetch assignments' });
-    }
-  });  
+  try {
+    const assignments = await Assignment.find();
+    res.render('index', { assignments, error: null });
+  } catch (err) {
+    console.error('Error fetching assignments:', err.message);
+    res.render('index', { assignments: [], error: 'Failed to fetch assignments' });
+  }
+});
 
 // Render form to add new assignment
 app.get('/new', (req, res) => {
@@ -50,6 +50,29 @@ app.post('/new', async (req, res) => {
   } catch (err) {
     console.error('Error creating assignment:', err);
     res.send('Error creating assignment');
+  }
+});
+
+// Render edit form
+app.get('/edit/:id', async (req, res) => {
+  try {
+    const assignment = await Assignment.findById(req.params.id); // Find assignment by ID
+    res.render('edit', { assignment }); // Render edit form with assignment data
+  } catch (err) {
+    console.error('Error fetching assignment for editing:', err.message);
+    res.redirect('/');
+  }
+});
+
+// Update an assignment
+app.post('/edit/:id', async (req, res) => {
+  try {
+    const { title, description, dueDate } = req.body;
+    await Assignment.findByIdAndUpdate(req.params.id, { title, description, dueDate }); // Update assignment
+    res.redirect('/'); // Redirect to homepage after update
+  } catch (err) {
+    console.error('Error updating assignment:', err.message);
+    res.send('Error updating assignment');
   }
 });
 
