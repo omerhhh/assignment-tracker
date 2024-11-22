@@ -1,0 +1,35 @@
+/* Ensure the body takes up the full viewport height */
+body {
+    background-color: #181818; /* Dark background for the entire page */
+    color: #ffffff; /* White text for readability */
+    min-height: 100vh; /* Full viewport height */
+    margin: 0; /* Remove default margin */
+    display: flex; /* Flexbox layout */
+    flex-direction: column; /* Stack children vertically */
+}
+
+/* Main content container */
+.container {
+    margin-top: 50px; /* Space below the navbar */
+    padding: 30px; /* Add padding inside the container */
+    background-color: #1e1e1e; /* Slightly lighter than background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+    flex: 1; /* Allows the container to grow and take up available space */
+}
+
+/* Navbar styling */
+.navbar {
+    background-color: #181818; /* Matches the overall theme */
+    margin-bottom: 20px; /* Space below the navbar */
+}
+
+/* Footer styling */
+footer {
+    background-color: #181818; /* Dark footer background */
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0; /* Vertical padding */
+    font-size: 0.9rem; /* Font size */
+    margin-top: auto; /* Pushes the footer to the bottom */
+}

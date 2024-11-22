@@ -15,7 +15,7 @@ console.log('MongoDB URI:', process.env.MONGO_URI);
 
 // Connect to MongoDB
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to MongoDB'))
   .catch((err) => console.error('MongoDB connection error:', err));
 
@@ -25,6 +25,10 @@ app.set('view engine', 'ejs'); // Set EJS as the templating engine
 app.set('views', './views'); // Path to the views folder
 
 // Routes
+// Render a welcome home page
+app.get('/home', (req, res) => {
+  res.render('home'); // Render a dedicated home page
+});
 
 // Homepage - Fetch all assignments with search and sorting
 app.get('/', async (req, res) => {
@@ -101,6 +105,9 @@ app.post('/delete/:id', async (req, res) => {
     res.status(500).send('Failed to delete assignment');
   }
 });
+
+// Serve static files from the 'public' folder
+app.use(express.static('public'));
 
 // Start the Server
 app.listen(PORT, () => {
