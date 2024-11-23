@@ -54,7 +54,10 @@ You can view the live version of the application here:
    ```
 
 ## Acknowledgements
-- **Render** for hosting the app.
-- **MongoDB** for database management.
-- **Bootstrap** for responsive design and UI components.
-```
+Render: For hosting the app and providing a cloud-based deployment platform.
+MongoDB: For database management and storage.
+Bootstrap: For creating a responsive design and UI components.
+Dotenv: For managing environment variables securely.
+Express: For building the backend web framework.
+Mongoose: For MongoDB object modeling and interaction.
+EJS: For templating engine to render dynamic content.
